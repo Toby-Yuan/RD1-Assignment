@@ -1,3 +1,17 @@
+<?php
+
+require_once("connect.php");
+
+$searchCity = "SELECT * FROM `city36hr`";
+$resultCity = mysqli_query($link, $searchCity);
+
+if(isset($_POST["submit"])){
+    $cityName = $_POST["city"];
+    $towmLocation = $_POST["town"];
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,14 +29,17 @@
             <!-- 選擇地區 -->
             <form id="selectCity">
                 <select name="city" id="city">
-                    <option value="1">縣市</option>
+                    <option value="" selected disabled>-----</option>
+                    <?php while($city = mysqli_fetch_assoc($resultCity)){ ?>
+                        <option value="<?= $city['locationName'] ?>"><?= $city['locationName'] ?></option>
+                    <?php } ?>
+                    
+                    <!-- <option value="1">縣市</option>
                     <option value="2">縣市</option>
-                    <option value="3">縣市</option>
+                    <option value="3">縣市</option> -->
                 </select>
                 <select name="town" id="town">
-                    <option value="1">鄉鎮</option>
-                    <option value="2">鄉鎮</option>
-                    <option value="3">鄉鎮</option>
+                    <option value="" selected disabled>-----</option>
                 </select>
                 <input type="submit" value="送出">
             </form>
@@ -61,5 +78,22 @@
         <!-- 顯示未來 -->
         <div id="right"></div>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            // 下拉式選單連動
+            $("#city").on("change", function(){
+                var s = $("#city option:selected").text();
+	            $.get('getLetterNumber.php?letter=' + s, letterChangeDataBack);
+            });
+
+            function letterChangeDataBack(data) {
+                $("#town").html(data);
+            };
+
+        });
+    </script>
 </body>
 </html>
