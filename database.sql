@@ -15,7 +15,6 @@ CREATE TABLE city36hr(
 CREATE TABLE town(
     id int not null auto_increment primary key,
     locationName varchar(10) not null,
-    stationId int not null,
     cityName varchar(10) not null,
     townName varchar(10) not null,
     temp int not null,
@@ -26,7 +25,7 @@ CREATE TABLE town(
 -- 抓取雨量站累積雨量
 CREATE TABLE rain(
     id int not null auto_increment primary key,
-    townNum int not null,
+    locationName varchar(10) not null,
     rain int not null,
     hour24 int not null,
     dayRain int not null

@@ -7,7 +7,6 @@ require_once("connect.php");
 
 foreach($links['records']['location'] as $key=>$val){
     $locationName = $val['locationName'];
-    $stationId = $val['stationId'];
     $cityName = $val['parameter'][0]['parameterValue'];
     $townName = $val['parameter'][2]['parameterValue'];
     $temp = $val['weatherElement'][3]['elementValue'];
@@ -15,8 +14,8 @@ foreach($links['records']['location'] as $key=>$val){
     $dtn = $val['weatherElement'][16]['elementValue'];
 
     $insertSql = <<<insertsql
-    INSERT INTO town (locationName, stationId, cityName, townName, temp, D_tx, D_tn)
-    VALUES ('$locationName', $stationId, '$cityName', '$townName', $temp, $dtx, $dtn);
+    INSERT INTO town (locationName, cityName, townName, temp, D_tx, D_tn)
+    VALUES ('$locationName', '$cityName', '$townName', $temp, $dtx, $dtn);
     insertsql;
     mysqli_query($link, $insertSql);
 }
