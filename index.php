@@ -12,9 +12,20 @@ if(isset($_POST["submit"])){
     $cityName = $_POST["city"];
     $towmLocation = $_POST["town"];
 
-    $searchCityImage = "SELECT image FROM `city36hr` WHERE locationName = '$cityName'";
+    $searchCityImage = "SELECT * FROM `city36hr` WHERE locationName = '$cityName'";
     $resultImage = mysqli_query($link, $searchCityImage);
     $image = mysqli_fetch_assoc($resultImage);
+
+    $howsW = "";
+    if($image["wxValue"] < 3){
+        $howsW = "sun.png";
+    }elseif($image["wxValue"] < 5){
+        $howsW = "sunCloud.png";
+    }elseif($image["wxValue"] < 8){
+        $howsW = "cloud.png";
+    }else{
+        $howsW = "rain.png";
+    }
 }
 
 ?>
@@ -58,7 +69,7 @@ if(isset($_POST["submit"])){
 
                 <!-- 顯示狀況和溫度 -->
                 <div id="showDetail">
-                    <img src="https://fakeimg.pl/136/" alt="">
+                    <img src="<?= $howsW ?>" alt="">
 
                     <!-- 顯示溫度 -->
                     <div id="showTemp">
