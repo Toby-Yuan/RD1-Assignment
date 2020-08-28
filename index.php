@@ -9,27 +9,7 @@ $cityName = "縣市";
 $towmLocation = "鄉鎮站名";
 $rainP = "%";
 
-if(isset($_POST["submit"])){
-    $cityName = $_POST["city"];
-    $towmLocation = $_POST["town"];
-
-    $searchCityImage = "SELECT image, wxValue, popValue, wxName FROM `city36hr` WHERE locationName = '$cityName'";
-    $resultImage = mysqli_query($link, $searchCityImage);
-    $image = mysqli_fetch_assoc($resultImage);
-
-    $howsW = "";
-    if($image["wxValue"] < 3){
-        $howsW = "sun.png";
-    }elseif($image["wxValue"] < 5){
-        $howsW = "sunCloud.png";
-    }elseif($image["wxValue"] < 8){
-        $howsW = "cloud.png";
-    }else{
-        $howsW = "rain.png";
-    }
-
-    $rainP = $image["popValue"] . "%";
-}
+require_once("getToday.php");
 
 ?>
 
@@ -79,12 +59,12 @@ if(isset($_POST["submit"])){
 
                     <!-- 顯示溫度 -->
                     <div id="showTemp">
-                        <h2>溫度</h2>
+                        <h2><?= $town["temp"] ?>&deg;C</h2>
 
                         <!-- 顯示最高和最低 -->
                         <div id="temp">
-                            <h3><span>&Delta;</span>最高</h3>
-                            <h3><span>&nabla;</span>最低</h3>
+                            <h3><span>&Delta;</span><?= $town["D_tx"] ?></h3>
+                            <h3><span>&nabla;</span><?= $town["D_tn"] ?></h3>
                         </div>
                     </div>
                 </div>
@@ -92,9 +72,9 @@ if(isset($_POST["submit"])){
                 <!-- 顯示雨消息 -->
                 <div id="rain">
                     <h4>降雨機率 <?= $rainP ?> </h4>
-                    <h4>本日累積</h4>
-                    <h4>1小時累積</h4>
-                    <h4>1天累積</h4>
+                    <h4>本日累積 <?= $town["dayRain"] ?></h4>
+                    <h4>1小時累積 <?= $town["rain"] ?></h4>
+                    <h4>1天累積 <?= $town["hour24"] ?></h4>
                 </div>
             </div>
         </div>
