@@ -5,6 +5,9 @@ require_once("connect.php");
 $searchCity = "SELECT * FROM `city36hr`";
 $resultCity = mysqli_query($link, $searchCity);
 
+$cityName = "縣市";
+$towmLocation = "鄉鎮站名";
+
 if(isset($_POST["submit"])){
     $cityName = $_POST["city"];
     $towmLocation = $_POST["town"];
@@ -27,7 +30,7 @@ if(isset($_POST["submit"])){
         <div id="left">
 
             <!-- 選擇地區 -->
-            <form id="selectCity">
+            <form id="selectCity" method="POST">
                 <select name="city" id="city">
                     <option value="" selected disabled>-----</option>
                     <?php while($city = mysqli_fetch_assoc($resultCity)){ ?>
@@ -41,12 +44,12 @@ if(isset($_POST["submit"])){
                 <select name="town" id="town">
                     <option value="" selected disabled>-----</option>
                 </select>
-                <input type="submit" value="送出">
+                <input type="submit" value="送出" name="submit">
             </form>
 
             <!-- 顯示區域 -->
             <div id="show">
-                <h1>縣市/ <span>鄉鎮站名</span></h1>
+                <h1><?= $cityName ?>/ <span><?= $towmLocation ?></span></h1>
                 <img src="https://fakeimg.pl/360x240/" alt="" id="cityImg">
 
                 <!-- 顯示狀況和溫度 -->
