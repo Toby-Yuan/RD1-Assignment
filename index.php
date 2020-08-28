@@ -7,6 +7,7 @@ $resultCity = mysqli_query($link, $searchCity);
 
 $cityName = "縣市";
 $towmLocation = "鄉鎮站名";
+$rainP = "%";
 
 if(isset($_POST["submit"])){
     $cityName = $_POST["city"];
@@ -26,6 +27,8 @@ if(isset($_POST["submit"])){
     }else{
         $howsW = "rain.png";
     }
+
+    $rainP = $image["popValue"] . "%";
 }
 
 ?>
@@ -85,10 +88,10 @@ if(isset($_POST["submit"])){
 
                 <!-- 顯示雨消息 -->
                 <div id="rain">
-                    <h2>降雨機率</h2>
-                    <h2>本日累積</h2>
-                    <h2>1小時累積</h2>
-                    <h2>1天累積</h2>
+                    <h4>降雨機率 <?= $rainP ?> </h4>
+                    <h4>本日累積</h4>
+                    <h4>1小時累積</h4>
+                    <h4>1天累積</h4>
                 </div>
             </div>
         </div>
