@@ -13,7 +13,8 @@ $resultTown = mysqli_query($link, $searchTown);
 
 while($town = mysqli_fetch_assoc($resultTown)){
     $townLocation = $town['townName'] . "/" . $town['locationName'];
-    $result .= sprintf("<option value='%s'>%s</option>", $townLocation, $townLocation);
+    $location = $town['locationName'];
+    $result .= sprintf("<option value='%s'>%s</option>", $location, $townLocation);
 }
 
 echo $result;

@@ -13,7 +13,7 @@ if(isset($_POST["submit"])){
     $cityName = $_POST["city"];
     $towmLocation = $_POST["town"];
 
-    $searchCityImage = "SELECT * FROM `city36hr` WHERE locationName = '$cityName'";
+    $searchCityImage = "SELECT image, wxValue, popValue, wxName FROM `city36hr` WHERE locationName = '$cityName'";
     $resultImage = mysqli_query($link, $searchCityImage);
     $image = mysqli_fetch_assoc($resultImage);
 
@@ -72,7 +72,10 @@ if(isset($_POST["submit"])){
 
                 <!-- 顯示狀況和溫度 -->
                 <div id="showDetail">
-                    <img src="<?= $howsW ?>" alt="">
+                    <div id="wx">
+                        <img src="<?= $howsW ?>" alt="天氣狀況">
+                        <p><?= $image["wxName"] ?></p>
+                    </div>
 
                     <!-- 顯示溫度 -->
                     <div id="showTemp">
