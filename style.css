@@ -1,13 +1,90 @@
-@charset "UTF-8";
-* {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-family: 微軟正黑體;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 微軟正黑體;
 }
 
-body {
-  background: skyblue;
+body{
+    background: skyblue;
 }
-/*# sourceMappingURL=style.css.map */
+
+#box{
+    width: 940px;
+    margin: 30px auto 0;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+#left{
+    padding: 20px;
+}
+
+#selectCity select{
+    width: 150px;
+    padding: 3px;
+}
+
+#show{
+    margin-top: 20px;
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 0px 20px darkblue;
+    border-radius: 5px;
+}
+
+#show h1{
+    letter-spacing: 0.5em;
+}
+
+#show h1 span{
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+#cityImg{
+    width: 100%;
+}
+
+#showDetail{
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-gap: 10px;
+}
+
+#showDetail img{
+    width: 100%;
+}
+
+#showTemp{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-gap: 5px;
+}
+
+#showTemp h2{
+    font-size: 40px;
+    margin-top: 36px;
+}
+
+#temp{
+    margin-top: 36px;
+}
+
+#temp h3:nth-child(1){
+    color: red;
+}
+
+#temp h3:nth-child(2){
+    color: blue;
+}
+
+#rain{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
