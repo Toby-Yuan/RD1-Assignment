@@ -11,6 +11,10 @@ $towmLocation = "鄉鎮站名";
 if(isset($_POST["submit"])){
     $cityName = $_POST["city"];
     $towmLocation = $_POST["town"];
+
+    $searchCityImage = "SELECT image FROM `city36hr` WHERE locationName = '$cityName'";
+    $resultImage = mysqli_query($link, $searchCityImage);
+    $image = mysqli_fetch_assoc($resultImage);
 }
 
 ?>
@@ -50,7 +54,7 @@ if(isset($_POST["submit"])){
             <!-- 顯示區域 -->
             <div id="show">
                 <h1><?= $cityName ?>/ <span><?= $towmLocation ?></span></h1>
-                <img src="https://fakeimg.pl/360x240/" alt="" id="cityImg">
+                <img src="data:image/jpg;charset=utf8;base64,<?= base64_encode($image['image']) ?>" alt="城市景點" id="cityImg">
 
                 <!-- 顯示狀況和溫度 -->
                 <div id="showDetail">
