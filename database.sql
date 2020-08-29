@@ -41,3 +41,14 @@ CREATE TABLE twoDay(
     wxValue int not null,
     temp int not null
 );
+
+-- 抓取未來一週結構
+CREATE TABLE twoDay(
+    id int not null auto_increment primary key,
+    locationName varchar(10) not null,
+    startTime varchar(15) not null,
+    rainP varchar(5) not null,
+    wxName varchar(20) not null,
+    wxValue varchar(5) not null,
+    temp varchar(5) not null
+);

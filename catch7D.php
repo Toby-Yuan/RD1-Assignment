@@ -9,7 +9,7 @@ $today = date('Y-m-d',strtotime('1 day'));
 echo $links['records']['locations'][0]['locationsName'] . '<br>';
 
 foreach($links['records']['locations'][0]['location'] as $key => $val){
-    echo $val['locationName'] . '<br>';
+    echo $locationName = $val['locationName'] . '<br>';
 
     echo $val['weatherElement'][0]['elementName'] . '<br>';
     foreach($val['weatherElement'][0]['time'] as $key2 => $val2){
