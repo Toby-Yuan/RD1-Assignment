@@ -80,7 +80,56 @@ require_once("getToday.php");
         </div>
 
         <!-- 顯示未來 -->
-        <div id="right"></div>
+        <div id="right">
+            <form action="" method="post" id="selectDay">
+                <input type="submit" value="未來兩天" name="twoDay">
+                <input type="submit" value="未來一週" name="senDay">
+            </form>
+
+            <div id="showD">
+                <h1>未來兩天</h1>
+
+                <div class="oneDayBox">
+                    <div class="time">2020-08-28 12:00:00</div>
+                    <img src="sun.png" alt="">
+                    <div class="showDetailD">
+                        <h1>24&deg;C</h1>
+                        <hr>
+                        <h1>40%</h1>
+                    </div>
+                </div>
+
+                <div class="oneDayBox">
+                    <div class="time">2020-08-28 12:00:00</div>
+                    <img src="sun.png" alt="">
+                    <div class="showDetailD">
+                        <h1>24&deg;C</h1>
+                        <hr>
+                        <h1>40%</h1>
+                    </div>
+                </div>
+
+                <div class="oneDayBox">
+                    <div class="time">2020-08-28 12:00:00</div>
+                    <img src="sun.png" alt="">
+                    <div class="showDetailD">
+                        <h1>24&deg;C</h1>
+                        <hr>
+                        <h1>40%</h1>
+                    </div>
+                </div>
+
+                <div class="oneDayBox">
+                    <div class="time">2020-08-28 12:00:00</div>
+                    <img src="sun.png" alt="">
+                    <div class="showDetailD">
+                        <h1>24&deg;C</h1>
+                        <hr>
+                        <h1>40%</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

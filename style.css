@@ -87,3 +87,43 @@ body{
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
 }
+
+#right{
+    padding: 20px;
+}
+
+#selectDay input{
+    width: 150px;
+    padding: 3px;
+}
+
+#showD{
+    margin-top: 5px;
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 0px 20px darkblue;
+    border-radius: 5px;
+}
+
+#showD h1{
+    letter-spacing: 0.3em;
+}
+
+.oneDayBox{
+    display: grid;
+    grid-template-columns: 30% 30% 40%;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.oneDayBox .time{
+    padding-top: 40px;
+}
+
+.oneDayBox .showDetailD{
+    padding-top: 20px;
+    padding-left: 10px;
+}
