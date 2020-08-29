@@ -3,35 +3,46 @@ $json_url = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-089?Autho
 $json = file_get_contents($json_url);
 $links = json_decode($json, TRUE);
 
+require_once("connect.php");
+
 
 foreach($links['records']['locations'][0]['location'] as $key => $val){
-    echo $val['locationName'] . '<br>';
+    $locationName = $val['locationName'];
 
     foreach($val['weatherElement'][0]['time'] as $key2 => $val2){
         $today = date('Y-m-d',strtotime('1 day'));
 
         if($val2['startTime'] > $today){
-            echo $val2['startTime'] . '<br>';
-            echo $val2['elementValue'][0]['value'] . '<br>';
+            $startTime = $val2['startTime'];
+            $rainP = $val2['elementValue'][0]['value'];
             $startTime = $val2['startTime'];
     
             foreach($val['weatherElement'][1]['time'] as $key3 => $val3){
                 if($val3['startTime'] == $startTime){
-                    echo $val3['elementValue'][0]['value'] . '<br>';
-                    echo $val3['elementValue'][1]['value'] . '<br>';
+                    $wxName = $val3['elementValue'][0]['value'];
+                    $wxValue = $val3['elementValue'][1]['value'];
+
+                    $insertSql = <<< insertsql
+                    INSERT INTO twoDay (locationName, startTime, rainP, wxName, wxValue, temp)
+                    VALUES ('$locationName', '$startTime', $rainP, '$wxName', $wxValue, -99);
+                    insertsql;
+                    mysqli_query($link, $insertSql);
                 }
             }
     
             foreach($val['weatherElement'][3]['time'] as $key4 => $val4){
                 if($val4['dataTime'] == $startTime){
-                    echo $val4['elementValue'][0]['value'] . '<br>';
+                    $temp = $val4['elementValue'][0]['value'];
+
+                    $updateSql = <<<updqtesql
+                    UPDATE twoDay SET temp = $temp WHERE locationName = '$locationName' AND startTime = '$startTime';
+                    updqtesql;
+                    mysqli_query($link, $updateSql);
                 }
             }
         }
 
     }
-
-    echo "<hr>";
 }
 ?>
 
