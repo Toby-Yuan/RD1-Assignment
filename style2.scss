@@ -1,0 +1,159 @@
+$blue: rgb(86, 184, 223);
+$darkblue: rgba(30, 30, 184, 0.6);
+$blackblue: rgb(2, 69, 114);
+
+@mixin box{
+    width: 1200px;
+    margin: 20px auto;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 微軟正黑體;
+}
+
+body{
+    background: $blue;
+}
+
+form{
+    @include box();
+    margin-top: 40px;
+
+    select{
+        margin-right: 20px;
+        padding: 5px;
+        width: 200px;
+        border: none;
+        background: $blackblue;
+        color: white;
+    }
+
+    input{
+        padding: 5px;
+        width: 100px;
+        border: none;
+        background: $blackblue;
+        color: white;
+
+        &:hover{
+            padding: 4px;
+            border: 2px solid $blackblue;
+            background: $blue;
+            color: $blackblue;
+        }
+    }
+}
+
+#oneDay{
+    @include box();
+    margin-top: 20px;
+    border: 1px solid $blackblue;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px $darkblue;
+    background: white;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    #left{
+        padding: 20px;
+
+        h1{
+            letter-spacing: 0.3em;
+
+            span{
+                font-size: 24px;
+            }
+        }
+
+        img{
+            margin-top: 10px;
+            width: 100%;
+            border-radius: 10px;
+        }
+    }
+
+    #right{
+        padding: 20px;
+
+        #showDetail{
+            width: 100%;
+            display: grid;
+            grid-template-columns: 35% 35% 30%;
+            grid-gap: 20px;
+
+            #wx{
+                img{
+                    width: 100%;
+                }
+
+                p{
+                    font-size: 20px;
+                }
+            }
+
+            #showTemp{
+                padding-top: 50px;
+
+                h2{
+                    font-size: 52px;
+                }
+            }
+
+            #temp{
+                padding-top: 40px;
+
+                h3{
+                    font-size: 36px;
+
+                    &:nth-child(1){
+                        color: red;
+                    }
+
+                    &:nth-child(2){
+                        color: blue;
+                    }
+                }
+
+            }
+        }
+
+        #rain{
+            width: 100%;
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            font-size: 20px;
+        }
+    }
+}
+
+#twoDay{
+    @include box();
+    margin-top: 40px;
+    border: 1px solid $blackblue;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px $darkblue;
+    background: white;
+    padding: 20px;
+
+    #twoDayList{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 20px;
+
+        div{
+            padding: 10px;
+            text-align: center;
+            border: 2px solid $blackblue;
+            border-radius: 10px;
+
+            h3{
+                width: 150px;
+                margin: 0 auto;
+            }
+        }
+    }
+}
