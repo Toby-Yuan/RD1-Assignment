@@ -30,3 +30,14 @@ CREATE TABLE rain(
     hour24 int not null,
     dayRain int not null
 );
+
+-- 抓取未來兩天結構
+CREATE TABLE twoDay(
+    id int not null auto_increment primary key,
+    locationName varchar(10) not null,
+    startTime varchar(15) not null,
+    rainP int not null,
+    wxName varchar(20) not null,
+    wxValue int not null,
+    temp int not null
+);
