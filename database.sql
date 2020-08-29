@@ -43,7 +43,7 @@ CREATE TABLE twoDay(
 );
 
 -- 抓取未來一週結構
-CREATE TABLE twoDay(
+CREATE TABLE oneWeek(
     id int not null auto_increment primary key,
     locationName varchar(10) not null,
     startTime varchar(15) not null,

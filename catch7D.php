@@ -1,17 +1,16 @@
 <?php
-
+exit();
 $json_url = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-091?Authorization=CWB-6DBF737A-A676-4BC9-A35B-334E259FB4D2";
 $json = file_get_contents($json_url);
 $links = json_decode($json, TRUE);
 
+require_once("connect.php");
+
 $today = date('Y-m-d',strtotime('1 day'));
 
-echo $links['records']['locations'][0]['locationsName'] . '<br>';
-
 foreach($links['records']['locations'][0]['location'] as $key => $val){
-    echo $locationName = $val['locationName'] . '<br>';
+    $locationName = $val['locationName'];
 
-    echo $val['weatherElement'][0]['elementName'] . '<br>';
     foreach($val['weatherElement'][0]['time'] as $key2 => $val2){
         $time = $val2['startTime'];
         if($val2['startTime'] > $today){
@@ -19,12 +18,16 @@ foreach($links['records']['locations'][0]['location'] as $key => $val){
             if($val2['elementValue'][0]['value'] == " "){
                 $popValue = "--";
             }
-            echo $time . '<br>';
-            echo $popValue . '<br>';
+
+            $insertSql = <<<insertsql
+            INSERT INTO oneWeek (locationName, startTime, rainP, wxName, wxValue, temp)
+            VALUES ('$locationName', '$time', '$popValue', "", "", "");
+            insertsql;
+            echo $insertSql . "<br>";
+            mysqli_query($link, $insertSql);
         }
     }
 
-    echo $val['weatherElement'][1]['elementName'] . '<br>';
     foreach($val['weatherElement'][1]['time'] as $key3 => $val3){
         $time = $val3['startTime'];
         if($val3['startTime'] > $today){
@@ -32,12 +35,16 @@ foreach($links['records']['locations'][0]['location'] as $key => $val){
             if($val3['elementValue'][0]['value'] == " "){
                 $tempValue = "--";
             }
-            echo $time . '<br>';
-            echo $tempValue . '<br>';
+            
+            $updateTemp = <<<updatetemp
+            UPDATE oneWeek SET temp = '$tempValue'
+            WHERE locationName = '$locationName' AND startTime = '$time';
+            updatetemp;
+            echo $updateTemp . "<br>";
+            mysqli_query($link, $updateTemp);
         }
     }
 
-    echo $val['weatherElement'][6]['elementName'] . '<br>';
     foreach($val['weatherElement'][6]['time'] as $key4 => $val4){
         $time = $val4['startTime'];
         if($val4['startTime'] > $today){
@@ -49,9 +56,13 @@ foreach($links['records']['locations'][0]['location'] as $key => $val){
             if($val4['elementValue'][1]['value'] == " "){
                 $wxValue = "--";
             }
-            echo $time . '<br>';
-            echo $wxName . '<br>';
-            echo $wxValue . '<br>';
+
+            $updateWx = <<<updatewx
+            UPDATE oneWeek SET wxName = '$wxName', wxValue = '$wxValue'
+            WHERE locationName = '$locationName' AND startTime = '$time';
+            updatewx;
+            echo $updateWx . "<br>";
+            mysqli_query($link, $updateWx);
         }
     }
 
