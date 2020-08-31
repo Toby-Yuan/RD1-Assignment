@@ -14,6 +14,9 @@ require_once("getToday.php");
 $searchTwo = "SELECT * FROM twoDay WHERE locationName = '$cityName'";
 $resultTwo = mysqli_query($link, $searchTwo);
 
+$searchWeek = "SELECT * FROM oneWeek WHERE locationName = '$cityName'";
+$resultWeek = mysqli_query($link, $searchWeek);
+
 ?>
 
 <!DOCTYPE html>
@@ -101,6 +104,55 @@ $resultTwo = mysqli_query($link, $searchTwo);
         </div>
     </div>
 
+    <div id="oneweek">
+        <h1>未來一週</h1>
+
+        <?php while($week = mysqli_fetch_assoc($resultWeek)) { ?>
+            <div class="oneday">
+                <div class="up">
+                    <h3><?= $week['startTime'] ?></h3>
+
+                    <?php 
+                        if($week["wxValue"] < 3){
+                            $howsWT = "sun.png";
+                        }elseif($week["wxValue"] < 5){
+                            $howsWT = "sunCloud.png";
+                        }elseif($week["wxValue"] < 8){
+                            $howsWT = "cloud.png";
+                        }else{
+                            $howsWT = "rain.png";
+                        }
+                    ?>
+
+                    <img src="<?= $howsWT ?>" alt="">
+                    <p><?= $week['wxName'] ?></p>
+                    <p><?= $week['temp'] ?>&deg;C | <?= $week['rainP'] ?>%</p>
+                </div>
+                <hr>
+
+                <?php $week = mysqli_fetch_assoc($resultWeek); ?>
+                <div class="down">
+                    <h3><?= $week['startTime'] ?></h3>
+
+                    <?php 
+                        if($week["wxValue"] < 3){
+                            $howsWT = "sun.png";
+                        }elseif($week["wxValue"] < 5){
+                            $howsWT = "sunCloud.png";
+                        }elseif($week["wxValue"] < 8){
+                            $howsWT = "cloud.png";
+                        }else{
+                            $howsWT = "rain.png";
+                        }
+                    ?>
+
+                    <img src="<?= $howsWT ?>" alt="">
+                    <p><?= $week['wxName'] ?></p>
+                    <p><?= $week['temp'] ?>&deg;C | <?= $week['rainP'] ?>%</p>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>

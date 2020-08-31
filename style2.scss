@@ -5,6 +5,10 @@ $blackblue: rgb(2, 69, 114);
 @mixin box{
     width: 1200px;
     margin: 20px auto;
+    border: 1px solid $blackblue;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px $darkblue;
+    background: white;
 }
 
 *{
@@ -21,6 +25,9 @@ body{
 form{
     @include box();
     margin-top: 40px;
+    border: none;
+    background: rgba(0, 0, 0, 0);
+    box-shadow: none;
 
     select{
         margin-right: 20px;
@@ -50,10 +57,6 @@ form{
 #oneDay{
     @include box();
     margin-top: 20px;
-    border: 1px solid $blackblue;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px $darkblue;
-    background: white;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 
@@ -133,10 +136,6 @@ form{
 #twoDay{
     @include box();
     margin-top: 40px;
-    border: 1px solid $blackblue;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px $darkblue;
-    background: white;
     padding: 20px;
 
     #twoDayList{
@@ -154,6 +153,43 @@ form{
                 width: 150px;
                 margin: 0 auto;
             }
+        }
+    }
+}
+
+#oneweek{
+    @include box();
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    padding: 20px;
+    grid-gap: 20px;
+
+    h1{
+        grid-column: 1 / 7;
+        margin-bottom: 10px;
+    }
+
+    .oneday{
+        padding: 10px;
+        text-align: center;
+        border: 2px solid $blackblue;
+        border-radius: 10px;
+
+        hr{
+            background: $darkblue;
+            height: 5px;
+            margin: 5px;
+        }
+
+        div{
+            height: 240px;
+        }
+
+        .down{
+            background: rgb(177, 177, 177);
+            color: rgb(0, 0, 0);
+            border-radius: 5px;
         }
     }
 }

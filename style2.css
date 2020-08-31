@@ -14,7 +14,16 @@ body {
 form {
   width: 1200px;
   margin: 20px auto;
+  border: 1px solid #024572;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 10px rgba(30, 30, 184, 0.6);
+          box-shadow: 0px 0px 10px rgba(30, 30, 184, 0.6);
+  background: white;
   margin-top: 40px;
+  border: none;
+  background: rgba(0, 0, 0, 0);
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 form select {
@@ -44,12 +53,12 @@ form input:hover {
 #oneDay {
   width: 1200px;
   margin: 20px auto;
-  margin-top: 20px;
   border: 1px solid #024572;
   border-radius: 5px;
   -webkit-box-shadow: 0px 0px 10px rgba(30, 30, 184, 0.6);
           box-shadow: 0px 0px 10px rgba(30, 30, 184, 0.6);
   background: white;
+  margin-top: 20px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[2];
@@ -132,12 +141,12 @@ form input:hover {
 #twoDay {
   width: 1200px;
   margin: 20px auto;
-  margin-top: 40px;
   border: 1px solid #024572;
   border-radius: 5px;
   -webkit-box-shadow: 0px 0px 10px rgba(30, 30, 184, 0.6);
           box-shadow: 0px 0px 10px rgba(30, 30, 184, 0.6);
   background: white;
+  margin-top: 40px;
   padding: 20px;
 }
 
@@ -159,5 +168,52 @@ form input:hover {
 #twoDay #twoDayList div h3 {
   width: 150px;
   margin: 0 auto;
+}
+
+#oneweek {
+  width: 1200px;
+  margin: 20px auto;
+  border: 1px solid #024572;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 10px rgba(30, 30, 184, 0.6);
+          box-shadow: 0px 0px 10px rgba(30, 30, 184, 0.6);
+  background: white;
+  margin-top: 40px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
+  padding: 20px;
+  grid-gap: 20px;
+}
+
+#oneweek h1 {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 6;
+  grid-column: 1 / 7;
+  margin-bottom: 10px;
+}
+
+#oneweek .oneday {
+  padding: 10px;
+  text-align: center;
+  border: 2px solid #024572;
+  border-radius: 10px;
+}
+
+#oneweek .oneday hr {
+  background: rgba(30, 30, 184, 0.6);
+  height: 5px;
+  margin: 5px;
+}
+
+#oneweek .oneday div {
+  height: 240px;
+}
+
+#oneweek .oneday .down {
+  background: #b1b1b1;
+  color: black;
+  border-radius: 5px;
 }
 /*# sourceMappingURL=style2.css.map */
