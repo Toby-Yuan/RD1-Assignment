@@ -2,6 +2,8 @@
 
 require_once("connect.php");
 
+require_once("update/updateCity.php");
+
 $searchCity = "SELECT * FROM `city36hr`";
 $resultCity = mysqli_query($link, $searchCity);
 
