@@ -3,6 +3,8 @@ $json_url = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Autho
 $json = file_get_contents($json_url);
 $links = json_decode($json, TRUE);
 
+require_once('connect.php');
+
 foreach($links['records']['location'] as $key=>$val){
     $locationName = $val['locationName'];
     $wxName = $val['weatherElement'][0]['time'][0]['parameter']['parameterName'];
