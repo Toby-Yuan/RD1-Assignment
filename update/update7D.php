@@ -1,5 +1,5 @@
 <?php
-$json_url = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-091?Authorization=CWB-6DBF737A-A676-4BC9-A35B-334E259FB4D2&locationName=" . $cityName;
+$json_url = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-091?Authorization=CWB-6DBF737A-A676-4BC9-A35B-334E259FB4D2&locationName=" . $cityName. "&elementName=PoP12h&elementName=Wx&elementName=T";
 $json = file_get_contents($json_url);
 $links = json_decode($json, TRUE);
 
@@ -45,7 +45,7 @@ foreach($links['records']['locations'][0]['location'] as $key => $val){
         }
     }
 
-    foreach($val['weatherElement'][6]['time'] as $key4 => $val4){
+    foreach($val['weatherElement'][2]['time'] as $key4 => $val4){
         $time = $val4['startTime'];
         if($val4['startTime'] > $today){
             $wxName = $val4['elementValue'][0]['value'];
