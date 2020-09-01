@@ -44,6 +44,9 @@ if(isset($_POST["submit"])){
     if($town["rain"] == -998){
         $town["rain"] = "--";
     }
+
+    require_once("update/update2D.php");
+    require_once("update/update7D.php");
 }
 
 ?>
