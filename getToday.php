@@ -1,6 +1,7 @@
 <?php
 
 if(isset($_POST["submit"])){
+    require_once("update/updateRain.php");
     $cityName = $_POST["city"];
     $towmLocation = $_POST["town"];
 

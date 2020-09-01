@@ -7,6 +7,7 @@ if (!isset($_GET["letter"])) {
 $letter = $_GET["letter"];
 
 require_once("connect.php");
+require_once("update/updateTown.php");
 
 $searchTown = "SELECT locationName, townName FROM town WHERE cityName = '$letter'";
 $resultTown = mysqli_query($link, $searchTown);
