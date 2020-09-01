@@ -61,13 +61,13 @@ $resultWeek = mysqli_query($link, $searchWeek);
 
                 <!-- 顯示溫度 -->
                 <div id="showTemp">
-                    <h2><?= $town["temp"] ?>&deg;C</h2>
+                    <h2><?= (isset($town["temp"])) ? $town["temp"] : "--" ?>&deg;C</h2>
                 </div>
 
                 <!-- 顯示最高和最低 -->
                 <div id="temp">
-                    <h3><span>&Delta;</span><?= $town["D_tx"] ?></h3>
-                    <h3><span>&nabla;</span><?= $town["D_tn"] ?></h3>
+                    <h3><span>&Delta;</span><?= (isset($town["D_tx"])) ? $town["D_tx"] : "--" ?></h3>
+                    <h3><span>&nabla;</span><?= (isset($town["D_tn"])) ? $town["D_tn"] : "--" ?></h3>
                 </div>
             </div>
 
