@@ -193,3 +193,47 @@ form{
         }
     }
 }
+
+@media screen and (min-width:770px) and (max-width:1199px){
+    @mixin padBox{
+        width: 765px;
+        margin: 20px auto;
+    }
+
+    form, #oneDay, #twoDay, #oneweek{
+        @include padBox();
+    }
+
+    #oneDay{
+        grid-template-columns: repeat(1, 1fr);
+
+        #left{
+            img{
+                height: 50vh;
+            }
+        }
+    }
+
+    #twoDay{
+        #twoDayList{
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    #oneweek{
+        grid-template-columns: repeat(1, 1fr);
+
+        h1{
+            grid-column: 1 / 2;
+        }
+
+        .oneday{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+
+            hr{
+                display: none;
+            }
+        }
+    }
+}

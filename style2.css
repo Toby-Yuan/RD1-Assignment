@@ -216,4 +216,40 @@ form input:hover {
   color: black;
   border-radius: 5px;
 }
+
+@media screen and (min-width: 770px) and (max-width: 1199px) {
+  form, #oneDay, #twoDay, #oneweek {
+    width: 765px;
+    margin: 20px auto;
+  }
+  #oneDay {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+  #oneDay #left img {
+    height: 50vh;
+  }
+  #twoDay #twoDayList {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+  #oneweek {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+  #oneweek h1 {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1 / 2;
+  }
+  #oneweek .oneday {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+  #oneweek .oneday hr {
+    display: none;
+  }
+}
 /*# sourceMappingURL=style2.css.map */
