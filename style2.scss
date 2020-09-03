@@ -194,7 +194,7 @@ form{
     }
 }
 
-@media screen and (min-width:770px) and (max-width:1199px){
+@media screen and (max-width:1199px){
     @mixin padBox{
         width: 765px;
         margin: 20px auto;

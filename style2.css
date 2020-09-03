@@ -217,7 +217,7 @@ form input:hover {
   border-radius: 5px;
 }
 
-@media screen and (min-width: 770px) and (max-width: 1199px) {
+@media screen and (max-width: 1199px) {
   form, #oneDay, #twoDay, #oneweek {
     width: 765px;
     margin: 20px auto;
