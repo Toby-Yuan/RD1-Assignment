@@ -85,7 +85,14 @@ $resultWeek = mysqli_query($link, $searchWeek);
         <h1>未來兩天</h1>
 
         <div id="twoDayList">
-            <?php while($two = mysqli_fetch_assoc($resultTwo)) { ?>
+            <?php
+            $i = 0;
+            while($two = mysqli_fetch_assoc($resultTwo)) { 
+                $i++;
+                if($i > 4){
+                    break;
+                }
+            ?>
                 <div>
                     <h3><?= $two["startTime"] ?></h3>
 
