@@ -7,16 +7,19 @@ require_once './models/updateWeek.php';
 
 class helloM extends database{
 
+    // 抓取所有縣市名稱
     public function allCityList(){
         $search = self::query("SELECT locationName FROM city36hr");
         return $search;
     }
 
+    // 抓取該縣市內所有的氣象站名稱和所在鄉鎮
     public function allTownList($city){
         $search = self::query("SELECT locationName, townName FROM town WHERE cityName = '$city'");
         return $search;
     }
 
+    // 抓取該縣市當前的天氣資訊
     public function getCity(){
         if(isset($_POST['submit'])){
             $updateR = new updateRain();
@@ -36,6 +39,7 @@ class helloM extends database{
         }
     }
 
+    // 抓取該縣市未來兩天預報
     public function getTwo(){
         $city = $_POST['city'];
         $update2 = new updateTwo();
@@ -44,6 +48,7 @@ class helloM extends database{
         return $search;
     }
 
+    // 抓取該縣市未來一週預報
     public function getWeek(){
         $city = $_POST['city'];
         $update7 = new updateWeek();

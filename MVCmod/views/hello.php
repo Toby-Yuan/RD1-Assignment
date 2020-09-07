@@ -13,6 +13,7 @@ $test->townShow();
 </head>
 <body>
     
+    <!-- 連動式選單: 選擇縣市的時候會影響到右邊的選單選項 -->
     <form action="" method="post">
         <select name="city" id="city">
             <option value="" selected disabled>-----</option>
@@ -25,6 +26,7 @@ $test->townShow();
     </form>
 
     <div id="oneDay">
+        <!-- 顯示縣市圖片 -->
         <div id="left">
             <h1><?= $test->detail[0] ?>/ <span><?= $test->detail[1] ?></span></h1>
             <img src="data:image/jpg;charset=utf8;base64,<?= base64_encode($test->detail[5]) ?>" alt="城市景點" id="cityImg">
@@ -59,6 +61,7 @@ $test->townShow();
         </div>
     </div>
 
+    <!-- 未來兩天顯示 -->
     <div id="twoDay">
         <h1>未來兩天</h1>
 
@@ -67,6 +70,7 @@ $test->townShow();
         </div>
     </div>
 
+    <!-- 未來一週顯示 -->
     <div id="oneweek">
         <h1>未來一週</h1>
         <?= $test->oneWeek() ?>
@@ -79,6 +83,8 @@ $test->townShow();
             // 下拉式選單連動
             $("#city").on("change", function(){
                 var s = $("#city option:selected").text();
+
+                // 利用get來搜尋資料庫
 	            window.location = "http://localhost:8888/RD1-Assignment/MVCmod/hello?city=" + s;
             });
 

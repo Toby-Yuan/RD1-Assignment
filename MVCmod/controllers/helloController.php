@@ -10,9 +10,12 @@ class helloC {
 
     public function __construct(){
         $this->result = new helloM();
+
+        // 載入頁面時更新縣市資訊
         $updateC = new updateCity();
     }
 
+    // 顯示各縣市選項
     public function allCity(){
         $result = $this->result->allCityList();
         $list = "";
@@ -20,6 +23,7 @@ class helloC {
             $list .= "<option value='$value[0]'>$value[0]</option>";
         }
 
+        //  預設已選擇選到的縣市
         if($_GET['city']){
             $city = $_GET['city'];
             $list = "<option value='$city' selected>$city</option>" . $list;
@@ -28,6 +32,7 @@ class helloC {
         return $list;
     }
 
+    // 根據選擇的縣市搜尋該縣市的氣象站
     public function allTown(){
         $list = "<option value='' selected disabled>-----</option>";
 
@@ -45,6 +50,7 @@ class helloC {
         return $list;
     }
 
+    // 顯示該縣市當前天氣資訊
     public function townShow(){
         $result = $this->result->getCity();
         $this->detail = [];
@@ -56,6 +62,7 @@ class helloC {
         }
     }
 
+    // 針對wxValue顯示不同圖片
     public function image($val){
         if($val < 3){
             return "./img/sun.png";
@@ -68,6 +75,7 @@ class helloC {
         }
     }
 
+    // 顯示未來兩天預報
     public function twoDay(){
         $result = $this->result->getTwo();
         $list = "";
@@ -96,6 +104,7 @@ class helloC {
         return $list;
     }
 
+    // 顯示未來一週預報
     public function oneWeek(){
         $result = $this->result->getWeek();
         $list = "";
@@ -113,6 +122,7 @@ class helloC {
         return $list;
     }
 
+    // 在未來一週的區塊, 上午的放上面
     public function showUp($value){
         $image = $this->image($value[5]);
         $one = <<<oneIt
@@ -128,6 +138,7 @@ class helloC {
         return $one;
     }
 
+    // 在未來一週的區塊, 下午的放下面
     public function showDown($value){
         $image = $this->image($value[5]);
         $one = <<<oneIt
