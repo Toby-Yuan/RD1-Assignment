@@ -23,6 +23,7 @@ $test->townShow();
             <?= $test->allTown() ?>
         </select>
         <input type="submit" value="送出" name="submit">
+        <input type="submit" value="各鄉鎮預報" name="showTown">
     </form>
 
     <div id="oneDay">

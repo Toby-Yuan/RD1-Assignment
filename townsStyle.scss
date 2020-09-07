@@ -1,0 +1,57 @@
+$blue: rgb(86, 184, 223);
+$darkblue: rgba(30, 30, 184, 0.6);
+$blackblue: rgb(2, 69, 114);
+
+@mixin box{
+    width: 1200px;
+    margin: 20px auto;
+    border: 1px solid $blackblue;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px $darkblue;
+    background: white;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 微軟正黑體;
+}
+
+body{
+    background: $blue;
+}
+
+#box{
+    h1{
+        width: 1200px;
+        margin: 40px auto;
+    }
+
+    #town{
+        @include box();
+        padding: 20px;
+
+        .townOne{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 20px;
+
+            h2{
+                grid-column: 1 / 5;
+            }
+
+            div{
+                padding: 10px;
+                text-align: center;
+                border: 2px solid $blackblue;
+                border-radius: 10px;
+
+                h3{
+                    width: 150px;
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+}

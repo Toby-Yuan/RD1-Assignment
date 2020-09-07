@@ -37,6 +37,12 @@ class helloM extends database{
             $search = self::query($searchIt);
             return $search;
         }
+
+        if(isset($_POST['showTown'])){
+            $city = $_POST['city'];
+            header("location: ./towns?city=$city");
+            exit();
+        }
     }
 
     // 抓取該縣市未來兩天預報
