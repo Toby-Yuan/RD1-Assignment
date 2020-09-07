@@ -1,0 +1,255 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 微軟正黑體;
+}
+
+body {
+  background: #56b8df;
+}
+
+form {
+  width: 1200px;
+  margin: 20px auto;
+  border: 1px solid #024572;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 10px rgba(30, 30, 184, 0.6);
+          box-shadow: 0px 0px 10px rgba(30, 30, 184, 0.6);
+  background: white;
+  margin-top: 40px;
+  border: none;
+  background: rgba(0, 0, 0, 0);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+form select {
+  margin-right: 20px;
+  padding: 5px;
+  width: 200px;
+  border: none;
+  background: #024572;
+  color: white;
+}
+
+form input {
+  padding: 5px;
+  width: 100px;
+  border: none;
+  background: #024572;
+  color: white;
+}
+
+form input:hover {
+  padding: 4px;
+  border: 2px solid #024572;
+  background: #56b8df;
+  color: #024572;
+}
+
+#oneDay {
+  width: 1200px;
+  margin: 20px auto;
+  border: 1px solid #024572;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 10px rgba(30, 30, 184, 0.6);
+          box-shadow: 0px 0px 10px rgba(30, 30, 184, 0.6);
+  background: white;
+  margin-top: 20px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+}
+
+#oneDay #left {
+  padding: 20px;
+}
+
+#oneDay #left h1 {
+  letter-spacing: 0.3em;
+}
+
+#oneDay #left h1 span {
+  font-size: 24px;
+}
+
+#oneDay #left img {
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+#oneDay #right {
+  padding: 20px;
+}
+
+#oneDay #right #showDetail {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 35% 35% 30%;
+      grid-template-columns: 35% 35% 30%;
+  grid-gap: 20px;
+}
+
+#oneDay #right #showDetail #wx img {
+  width: 100%;
+}
+
+#oneDay #right #showDetail #wx p {
+  font-size: 20px;
+}
+
+#oneDay #right #showDetail #showTemp {
+  padding-top: 50px;
+}
+
+#oneDay #right #showDetail #showTemp h2 {
+  font-size: 52px;
+}
+
+#oneDay #right #showDetail #temp {
+  padding-top: 40px;
+}
+
+#oneDay #right #showDetail #temp h3 {
+  font-size: 36px;
+}
+
+#oneDay #right #showDetail #temp h3:nth-child(1) {
+  color: red;
+}
+
+#oneDay #right #showDetail #temp h3:nth-child(2) {
+  color: blue;
+}
+
+#oneDay #right #rain {
+  width: 100%;
+  margin-top: 20px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  font-size: 20px;
+}
+
+#twoDay {
+  width: 1200px;
+  margin: 20px auto;
+  border: 1px solid #024572;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 10px rgba(30, 30, 184, 0.6);
+          box-shadow: 0px 0px 10px rgba(30, 30, 184, 0.6);
+  background: white;
+  margin-top: 40px;
+  padding: 20px;
+}
+
+#twoDay #twoDayList {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+
+#twoDay #twoDayList div {
+  padding: 10px;
+  text-align: center;
+  border: 2px solid #024572;
+  border-radius: 10px;
+}
+
+#twoDay #twoDayList div h3 {
+  width: 150px;
+  margin: 0 auto;
+}
+
+#oneweek {
+  width: 1200px;
+  margin: 20px auto;
+  border: 1px solid #024572;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 10px rgba(30, 30, 184, 0.6);
+          box-shadow: 0px 0px 10px rgba(30, 30, 184, 0.6);
+  background: white;
+  margin-top: 40px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
+  padding: 20px;
+  grid-gap: 20px;
+}
+
+#oneweek h1 {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 6;
+  grid-column: 1 / 7;
+  margin-bottom: 10px;
+}
+
+#oneweek .oneday {
+  padding: 10px;
+  text-align: center;
+  border: 2px solid #024572;
+  border-radius: 10px;
+}
+
+#oneweek .oneday hr {
+  background: rgba(30, 30, 184, 0.6);
+  height: 5px;
+  margin: 5px;
+}
+
+#oneweek .oneday div {
+  height: 240px;
+}
+
+#oneweek .oneday .down {
+  background: #b1b1b1;
+  color: black;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 1199px) {
+  form, #oneDay, #twoDay, #oneweek {
+    width: 765px;
+    margin: 20px auto;
+  }
+  #oneDay {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+  #oneDay #left img {
+    height: 50vh;
+  }
+  #twoDay #twoDayList {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+  #oneweek {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+  #oneweek h1 {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1 / 2;
+  }
+  #oneweek .oneday {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+  #oneweek .oneday hr {
+    display: none;
+  }
+}
+/*# sourceMappingURL=style2.css.map */

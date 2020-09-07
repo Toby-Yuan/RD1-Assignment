@@ -4,7 +4,7 @@ class database {
 
     // 設定資料庫連線項目
     public static $host = "localhost";
-    public static $dbname = "pid";
+    public static $dbname = "rd1";
     public static $userName = "root";
     public static $password = "root";
 
