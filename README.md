@@ -1,5 +1,6 @@
 # RD1-Assignment
 研發一處 實作
+請開啟MVC版本(MVCmod)
 
 # 題目
 ## 個人氣象網站
