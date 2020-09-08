@@ -217,6 +217,19 @@ form input:hover {
   border-radius: 5px;
 }
 
+#line{
+  width: 1200px;
+  height: 600px;
+  margin: 40px auto;
+  padding: 40px;
+  border: 1px solid #024572;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 10px rgba(30, 30, 184, 0.6);
+          box-shadow: 0px 0px 10px rgba(30, 30, 184, 0.6);
+  background: white;
+  border: none;
+}
+
 @media screen and (max-width: 1199px) {
   form, #oneDay, #twoDay, #oneweek {
     width: 765px;

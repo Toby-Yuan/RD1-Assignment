@@ -153,6 +153,90 @@ class helloC {
         return $one;
     }
 
+    public function line(){
+        $result = $this->result->getWeek();
+        $valuePOP = [];
+        $valueTEMP = [];
+        $date = [];
+
+        $count = 0;
+        foreach($result as $key=>$value){
+            if($count % 2 != 0){
+                $count++;
+                continue; 
+            }else{
+                $date[] = $value[2];
+                $valuePOP[] = $value[3];
+                $valueTEMP[] = $value[6];
+                $count++;
+            }
+        }
+
+        $valuePOP = json_encode($valuePOP);
+        $valueTEMP = json_encode($valueTEMP);
+        $date = json_encode($date);
+
+        $show = <<<showIt
+        <canvas id="myChart" width="1200" height="540"></canvas>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script>
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+
+                // The data for our dataset
+                data: {
+                    labels: $date,
+                    datasets: [{
+                        label: '預測溫度(C)',
+                        backgroundColor: 'rgba(30, 30, 184, 0.6)',
+                        borderColor: 'rgba(30, 30, 184, 0.6)',
+                        data: $valueTEMP,
+                        fill: false,
+                    },{
+                        label: '降雨機率(%)',
+                        backgroundColor: '#024572',
+                        borderColor: '#024572',
+                        data: $valuePOP,
+                        fill: false,
+                    }]
+                },
+
+                // Configuration options go here
+                options: {
+                    responsive: true,
+                    tooltips: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    hover: {
+                        mode: 'nearest',
+                        intersect: true
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: '日期'
+                            }
+                        }],
+                        yAxes: [{
+                            ticks:{
+                                suggestedMin: 0,
+                                suggestedMax: 100
+                            }
+                        }]
+                    }
+                }
+            });
+        </script>
+        showIt;
+
+        return $show;
+    }
+
 }
 
 ?>
